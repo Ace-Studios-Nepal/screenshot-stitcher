@@ -14,7 +14,6 @@ import {
 
 interface Props {
   baseCanvas: HTMLCanvasElement | null;
-  capturesCount: number;
   annotations: AnnotationItem[];
   activeTool: AnnotationTool;
   strokeColor: string;
@@ -26,7 +25,6 @@ interface Props {
 
 export const CanvasWorkspace: React.FC<Props> = ({
   baseCanvas,
-  capturesCount,
   annotations,
   activeTool,
   strokeColor,

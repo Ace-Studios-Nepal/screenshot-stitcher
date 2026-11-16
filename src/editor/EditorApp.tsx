@@ -637,7 +637,6 @@ export const EditorApp: React.FC = () => {
           {/* Canvas viewport */}
           <CanvasWorkspace
             baseCanvas={stitchResult?.canvas || null}
-            capturesCount={captures.length}
             annotations={annotations}
             activeTool={activeTool}
             strokeColor={strokeColor}
