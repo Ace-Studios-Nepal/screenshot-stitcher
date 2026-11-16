@@ -13,8 +13,8 @@
   "commands": {
     "capture-viewport": {
       "suggested_key": {
-        "default": "Alt+Shift+S",
-        "mac": "Command+Shift+S"
+        "default": "Alt+S",
+        "mac": "Alt+S"
       },
       "description": "Capture current visible viewport"
     }

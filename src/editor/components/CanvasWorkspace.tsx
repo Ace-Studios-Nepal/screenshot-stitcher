@@ -372,7 +372,7 @@ export const CanvasWorkspace: React.FC<Props> = ({
               <div className="pt-2 border-t border-slate-800/80 text-[11px] text-slate-500">
                 <span>In Chrome? Use the extension side panel or shortcut </span>
                 <kbd className="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[10px] border border-slate-700">
-                  Alt+Shift+S
+                  Alt+S
                 </kbd>
                 <span> to capture live pages.</span>
               </div>

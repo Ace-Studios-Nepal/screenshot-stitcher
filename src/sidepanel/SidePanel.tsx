@@ -116,7 +116,7 @@ export const SidePanel: React.FC = () => {
 
         <div className="flex items-center justify-center gap-1.5 text-[10px] text-slate-400">
           <Command className="w-3 h-3" />
-          <span>Shortcut: <kbd className="bg-slate-100 border border-slate-200 px-1 py-0.5 rounded font-mono text-slate-600">Alt+Shift+S</kbd></span>
+          <span>Shortcut: <kbd className="bg-slate-100 border border-slate-200 px-1 py-0.5 rounded font-mono text-slate-600">Alt+S</kbd></span>
         </div>
 
         {errorMessage && (
