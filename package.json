@@ -1,14 +1,16 @@
 {
   "name": "screenshot-stitcher",
   "version": "1.0.0",
-  "private": true,
-  "description": "Chrome extension to capture, stitch, annotate, and export screenshots",
+  "description": "Browser extension and web studio to capture, vertically stitch, annotate, and export screenshots as PNG or PDF.",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "test": "vitest run",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "package": "npm run build && npx web-ext build --source-dir dist --artifacts-dir artifacts --overwrite-dest",
+    "package:source": "mkdir -p artifacts && zip -r artifacts/source-code.zip README.md src public index.html editor.html popup.html sidepanel.html package.json package-lock.json tsconfig.json vite.config.ts tailwind.config.js postcss.config.js -x \"node_modules/*\" \"dist/*\" \".git/*\""
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
