@@ -29,6 +29,28 @@
 
 ---
 
+## 🌐 Chromium Compatibility & Architecture
+
+Screenshot Stitcher is **100% compatible with Chromium-based browsers** and strictly adheres to Google's **Manifest V3** standard.
+
+### Supported Chromium Browsers
+* 🟢 **Google Chrome** (v116+)
+* 🦁 **Brave Browser**
+* 🌊 **Microsoft Edge** (v116+)
+* ⭕ **Opera / Opera GX**
+* 🧭 **Vivaldi**
+* 🎨 **Arc Browser**
+
+### Technical Implementation Details for Chromium:
+* **Background Service Worker**: Operates via a native Manifest V3 ES module service worker (`background.js`) with event-driven lifecycle management.
+* **Native Side Panel API**: Fully implements Chromium's `chrome.sidePanel` API (`side_panel` declaration and `"sidePanel"` permission) to provide a dockable slide reel adjacent to active tabs.
+* **User Gesture Preservation**: Opening the side panel from the popup preserves Chromium's required user gesture context directly in the click event handler before delegating to background routines.
+* **Broad Host Permissions**: Declares `"host_permissions": ["<all_urls>"]` to enable capturing visible tabs (`chrome.tabs.captureVisibleTab`) and querying device pixel ratios (`chrome.scripting.executeScript`) from both the popup and persistent side panel frames without `activeTab` permission drops.
+* **Internal Protocol Safety**: Automatically detects and guards against scripting or capturing restricted browser internal pages (`chrome://`, `edge://`, `brave://`, `opera://`, `vivaldi://`, `arc://`, `devtools://`, `chrome-untrusted://`).
+* **Offline IndexedDB Storage**: Uses standard IndexedDB (`idb`) which operates consistently across Chromium service workers and extension pages.
+
+---
+
 ## 🚀 Browser Installation (Developer Mode)
 
 You can load and use Screenshot Stitcher directly without waiting for store approval.
@@ -50,6 +72,8 @@ You can load and use Screenshot Stitcher directly without waiting for store appr
    * **Chrome**: Visit `chrome://extensions`
    * **Brave**: Visit `brave://extensions`
    * **Edge**: Visit `edge://extensions`
+   * **Opera**: Visit `opera://extensions`
+   * **Vivaldi**: Visit `vivaldi://extensions`
 3. **Enable Developer Mode**:
    * Toggle the **Developer mode** switch (usually located at the top-right corner).
 4. **Load the Extension**:

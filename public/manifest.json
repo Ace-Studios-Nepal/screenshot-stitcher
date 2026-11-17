@@ -10,6 +10,9 @@
     "sidePanel",
     "downloads"
   ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "commands": {
     "capture-viewport": {
       "suggested_key": {

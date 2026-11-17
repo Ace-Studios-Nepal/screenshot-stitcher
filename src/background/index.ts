@@ -23,7 +23,20 @@ async function captureActiveTab(): Promise<CaptureItem> {
   }
 
   const url = activeTab.url || '';
-  if (url.startsWith('chrome://') || url.startsWith('chrome-extension://') || url.startsWith('edge://')) {
+  const restrictedProtocols = [
+    'chrome://',
+    'chrome-extension://',
+    'edge://',
+    'brave://',
+    'opera://',
+    'vivaldi://',
+    'arc://',
+    'about:',
+    'devtools://',
+    'chrome-untrusted://',
+    'view-source:',
+  ];
+  if (restrictedProtocols.some((protocol) => url.startsWith(protocol))) {
     throw new Error('Browser internal pages cannot be captured due to browser security restrictions.');
   }
 
@@ -111,7 +124,9 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     // Chrome SidePanel API support
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       if (tabs[0]?.windowId && chrome.sidePanel && chrome.sidePanel.open) {
-        chrome.sidePanel.open({ windowId: tabs[0].windowId });
+        chrome.sidePanel.open({ windowId: tabs[0].windowId }).catch((err) => {
+          console.warn('Side panel open error in background handler:', err);
+        });
       }
       sendResponse({ success: true });
     });

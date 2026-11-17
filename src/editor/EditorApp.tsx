@@ -325,7 +325,7 @@ export const EditorApp: React.FC = () => {
     if (!isExtension || !chrome?.runtime?.sendMessage) {
       showAlert(
         'Web Demo Mode',
-        'Direct webpage capture requires the Chrome Extension installed.\n\nIn this web studio demo, you can click "Load 3 Sample Screenshots" or "Upload Images" to test stitching, spacing, annotations, and PNG/PDF exports!',
+        'Direct webpage capture requires the extension installed in a Chromium-based browser (Chrome, Brave, Edge, Opera, Arc) or Firefox.\n\nIn this web studio demo, you can click "Load 3 Sample Screenshots" or "Upload Images" to test stitching, spacing, annotations, and PNG/PDF exports!',
         'info'
       );
       return;
@@ -467,7 +467,7 @@ export const EditorApp: React.FC = () => {
             type="button"
             onClick={handleTriggerCapture}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 transition-colors"
-            title={isExtension ? 'Capture current tab viewport' : 'Chrome Extension required for live capture'}
+            title={isExtension ? 'Capture current tab viewport' : 'Browser Extension required for live capture'}
           >
             <Camera className="w-3.5 h-3.5 text-blue-400" />
             <span>Capture Tab</span>

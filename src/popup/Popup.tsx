@@ -48,8 +48,22 @@ export const Popup: React.FC = () => {
     }
   };
 
-  const handleOpenSidePanel = () => {
-    chrome.runtime.sendMessage({ type: 'OPEN_SIDE_PANEL' });
+  const handleOpenSidePanel = async () => {
+    // In Chromium, chrome.sidePanel.open() requires a user gesture.
+    // Opening it directly from this click event handler preserves the user gesture.
+    if (typeof chrome !== 'undefined' && chrome.sidePanel && chrome.sidePanel.open) {
+      try {
+        const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+        if (tab?.windowId) {
+          await chrome.sidePanel.open({ windowId: tab.windowId });
+          window.close();
+          return;
+        }
+      } catch (err) {
+        console.warn('Could not open side panel directly from popup:', err);
+      }
+    }
+    chrome.runtime.sendMessage({ type: 'OPEN_SIDE_PANEL' }).catch(() => {});
     window.close();
   };
 

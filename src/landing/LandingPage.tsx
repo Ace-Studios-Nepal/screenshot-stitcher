@@ -487,7 +487,7 @@ export const LandingPage: React.FC = () => {
                             Studio
                         </a>
                         <a
-                            href="https://github.com"
+                            href="https://github.com/Ace-Studios-Nepal/screenshot-stitcher"
                             className="hover:text-slate-200 transition-colors flex items-center gap-1"
                         >
                             <Github className="w-3.5 h-3.5" /> GitHub
