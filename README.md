@@ -12,7 +12,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind%20CSS-38B2AC.svg)](https://tailwindcss.com/)
 [![Cross Browser](https://img.shields.io/badge/Browsers-Chrome%20%7C%20Firefox%20%7C%20Edge%20%7C%20Brave-orange.svg)](#-browser-installation-developer-mode)
 
-[**Live Web Studio Demo**](https://screenshot-stitcher.vercel.app/editor.html) • [**Report Bug**](https://github.com/Ace-Studios-Nepal/screenshot-stitcher/issues) • [**Request Feature**](https://github.com/Ace-Studios-Nepal/screenshot-stitcher/issues)
+[**Firefox Add-on**](https://addons.mozilla.org/addon/screenshot-stitcher/) • [**Live Web Studio Demo**](https://screenshot-stitcher.vercel.app/editor.html) • [**Report Bug**](https://github.com/Ace-Studios-Nepal/screenshot-stitcher/issues) • [**Request Feature**](https://github.com/Ace-Studios-Nepal/screenshot-stitcher/issues)
 
 </div>
 
@@ -85,6 +85,12 @@ You can load and use Screenshot Stitcher directly without waiting for store appr
 ---
 
 ### 🦊 Mozilla Firefox
+
+You can install the official add-on directly from [**Firefox Browser Add-ons (AMO)**](https://addons.mozilla.org/addon/screenshot-stitcher/):
+
+[![Get the Add-on](https://img.shields.io/badge/Firefox%20Add--on-Install%20Now-FF7139?logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/addon/screenshot-stitcher/)
+
+Or install manually in Developer Mode:
 
 1. Build or locate the extension package:
    ```bash

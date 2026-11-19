@@ -1,7 +1,6 @@
 import React from 'react';
 import {
     Layers,
-    ArrowRight,
     ShieldCheck,
     Zap,
     Sliders,
@@ -13,6 +12,35 @@ import {
     MousePointer,
     HelpCircle,
 } from 'lucide-react';
+
+const FIREFOX_ADDON_URL = 'https://addons.mozilla.org/addon/screenshot-stitcher/';
+const CHROME_STORE_URL = 'https://chrome.google.com/webstore';
+
+const FirefoxIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
+    <svg
+        role="img"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        className={className}
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <title>Firefox</title>
+        <path d="M8.824 7.287c.008 0 .004 0 0 0zm-2.8-1.4c.006 0 .003 0 0 0zm16.754 2.161c-.505-1.215-1.53-2.528-2.333-2.943.654 1.283 1.033 2.57 1.177 3.53l.002.02c-1.314-3.278-3.544-4.6-5.366-7.477-.091-.147-.184-.292-.273-.446a3.545 3.545 0 01-.13-.24 2.118 2.118 0 01-.172-.46.03.03 0 00-.027-.03.038.038 0 00-.021 0l-.006.001a.037.037 0 00-.01.005L15.624 0c-2.585 1.515-3.657 4.168-3.932 5.856a6.197 6.197 0 00-2.305.587.297.297 0 00-.147.37c.057.162.24.24.396.17a5.622 5.622 0 012.008-.523l.067-.005a5.847 5.847 0 011.957.222l.095.03a5.816 5.816 0 01.616.228c.08.036.16.073.238.112l.107.055a5.835 5.835 0 01.368.211 5.953 5.953 0 012.034 2.104c-.62-.437-1.733-.868-2.803-.681 4.183 2.09 3.06 9.292-2.737 9.02a5.164 5.164 0 01-1.513-.292 4.42 4.42 0 01-.538-.232c-1.42-.735-2.593-2.121-2.74-3.806 0 0 .537-2 3.845-2 .357 0 1.38-.998 1.398-1.287-.005-.095-2.029-.9-2.817-1.677-.422-.416-.622-.616-.8-.767a3.47 3.47 0 00-.301-.227 5.388 5.388 0 01-.032-2.842c-1.195.544-2.124 1.403-2.8 2.163h-.006c-.46-.584-.428-2.51-.402-2.913-.006-.025-.343.176-.389.206-.406.29-.787.616-1.136.974-.397.403-.76.839-1.085 1.303a9.816 9.816 0 00-1.562 3.52c-.003.013-.11.487-.19 1.073-.013.09-.026.181-.037.272a7.8 7.8 0 00-.069.667l-.002.034-.023.387-.001.06C.386 18.795 5.593 24 12.016 24c5.752 0 10.527-4.176 11.463-9.661.02-.149.035-.298.052-.448.232-1.994-.025-4.09-.753-5.844z" />
+    </svg>
+);
+
+const ChromeIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
+    <svg
+        role="img"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        className={className}
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <title>Google Chrome</title>
+        <path d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A5.454 5.454 0 0 1 12 6.545h10.691A12 12 0 0 0 12 0zM1.931 5.47A11.943 11.943 0 0 0 0 12c0 6.012 4.42 10.991 10.189 11.864l3.953-6.847a5.45 5.45 0 0 1-6.865-2.29zm13.342 2.166a5.446 5.446 0 0 1 1.45 7.09l.002.001h-.002l-5.344 9.257c.206.01.413.016.621.016 6.627 0 12-5.373 12-12 0-1.54-.29-3.011-.818-4.364zM12 16.364a4.364 4.364 0 1 1 0-8.728 4.364 4.364 0 0 1 0 8.728Z" />
+    </svg>
+);
 
 export const LandingPage: React.FC = () => {
     return (
@@ -62,22 +90,31 @@ export const LandingPage: React.FC = () => {
                         </a>
                     </nav>
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2 sm:gap-3">
                         <a
                             href="editor.html"
-                            className="text-xs font-semibold px-3.5 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors hidden sm:inline-flex items-center gap-1.5"
+                            className="text-xs font-semibold px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors hidden md:inline-flex items-center gap-1.5"
                         >
                             <span>Open Studio Demo</span>
                             <ExternalLink className="w-3.5 h-3.5 opacity-60" />
                         </a>
                         <a
-                            href="https://chrome.google.com/webstore"
+                            href={FIREFOX_ADDON_URL}
                             target="_blank"
                             rel="noreferrer"
-                            className="text-xs font-semibold px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/20 transition-all flex items-center gap-1.5"
+                            className="text-xs font-semibold px-3 sm:px-3.5 py-2 rounded-lg bg-orange-600/15 hover:bg-orange-600/25 text-orange-400 border border-orange-500/30 hover:border-orange-500/50 transition-all flex items-center gap-1.5"
                         >
-                            <span>Add to Chrome</span>
-                            <ArrowRight className="w-3.5 h-3.5" />
+                            <FirefoxIcon className="w-3.5 h-3.5" />
+                            <span>Firefox</span>
+                        </a>
+                        <a
+                            href={CHROME_STORE_URL}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-xs font-semibold px-3 sm:px-3.5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/20 transition-all flex items-center gap-1.5"
+                        >
+                            <ChromeIcon className="w-3.5 h-3.5" />
+                            <span>Chrome</span>
                         </a>
                     </div>
                 </div>
@@ -88,7 +125,7 @@ export const LandingPage: React.FC = () => {
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium mb-6 animate-pulse">
                     <Zap className="w-3.5 h-3.5" />
                     <span>
-                        Chrome Manifest V3 Extension • 100% Local & Free
+                        Firefox & Chrome Extension • 100% Local & Free
                     </span>
                 </div>
 
@@ -108,17 +145,26 @@ export const LandingPage: React.FC = () => {
 
                 <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
                     <a
-                        href="https://chrome.google.com/webstore"
+                        href={FIREFOX_ADDON_URL}
                         target="_blank"
                         rel="noreferrer"
-                        className="w-full sm:w-auto px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold shadow-xl shadow-blue-600/25 transition-all flex items-center justify-center gap-2"
+                        className="w-full sm:w-auto px-5 py-3 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white text-sm font-semibold shadow-xl shadow-orange-600/25 transition-all flex items-center justify-center gap-2"
                     >
-                        <Download className="w-4 h-4" />
-                        <span>Install Extension (Free)</span>
+                        <FirefoxIcon className="w-4 h-4" />
+                        <span>Add to Firefox</span>
+                    </a>
+                    <a
+                        href={CHROME_STORE_URL}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="w-full sm:w-auto px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold shadow-xl shadow-blue-600/25 transition-all flex items-center justify-center gap-2"
+                    >
+                        <ChromeIcon className="w-4 h-4" />
+                        <span>Add to Chrome</span>
                     </a>
                     <a
                         href="editor.html"
-                        className="w-full sm:w-auto px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 hover:text-white text-sm font-semibold transition-all flex items-center justify-center gap-2"
+                        className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 hover:text-white text-sm font-semibold transition-all flex items-center justify-center gap-2"
                     >
                         <span>Launch Web Studio Demo</span>
                         <ExternalLink className="w-4 h-4 opacity-70" />
@@ -413,11 +459,11 @@ export const LandingPage: React.FC = () => {
                         },
                         {
                             q: 'What browsers are supported?',
-                            a: 'Any modern Chromium-based browser, including Google Chrome, Microsoft Edge, Brave, Arc, and Opera (Manifest V3).',
+                            a: 'Screenshot Stitcher officially supports Mozilla Firefox (available on Firefox Add-ons) as well as all modern Chromium-based browsers, including Google Chrome, Microsoft Edge, Brave, Arc, and Opera.',
                         },
                         {
                             q: 'Is there any limit to the number of screenshots I can stitch?',
-                            a: 'We use IndexedDB instead of Chrome’s 10MB storage limit, so you can stitch dozens of high-res captures in one session.',
+                            a: 'We use IndexedDB instead of browser storage limits, so you can stitch dozens of high-res captures in one session.',
                         },
                         {
                             q: 'Is this extension free?',
@@ -447,23 +493,33 @@ export const LandingPage: React.FC = () => {
                         Ready to stitch your first screenshot?
                     </h2>
                     <p className="text-sm text-slate-300 max-w-md mx-auto">
-                        Install the extension or jump right into the browser
+                        Install the extension on Firefox or Chrome, or jump right into the browser
                         Studio demo.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                         <a
-                            href="https://chrome.google.com/webstore"
+                            href={FIREFOX_ADDON_URL}
                             target="_blank"
                             rel="noreferrer"
-                            className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-lg transition-all"
+                            className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white text-xs font-semibold shadow-lg shadow-orange-600/20 transition-all flex items-center justify-center gap-2"
                         >
-                            Add to Chrome
+                            <FirefoxIcon className="w-4 h-4" />
+                            <span>Add to Firefox</span>
+                        </a>
+                        <a
+                            href={CHROME_STORE_URL}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-lg shadow-blue-600/20 transition-all flex items-center justify-center gap-2"
+                        >
+                            <ChromeIcon className="w-4 h-4" />
+                            <span>Add to Chrome</span>
                         </a>
                         <a
                             href="editor.html"
-                            className="px-6 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition-all"
+                            className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition-all flex items-center justify-center gap-2"
                         >
-                            Launch Studio Demo
+                            <span>Launch Studio Demo</span>
                         </a>
                     </div>
                 </div>
@@ -479,12 +535,30 @@ export const LandingPage: React.FC = () => {
                         </span>
                         <span>• MIT License</span>
                     </div>
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-wrap items-center justify-center gap-4">
+                        <a
+                            href={FIREFOX_ADDON_URL}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="hover:text-slate-200 transition-colors flex items-center gap-1.5"
+                        >
+                            <FirefoxIcon className="w-3.5 h-3.5 text-orange-400" />
+                            <span>Firefox Add-on</span>
+                        </a>
+                        <a
+                            href={CHROME_STORE_URL}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="hover:text-slate-200 transition-colors flex items-center gap-1.5"
+                        >
+                            <ChromeIcon className="w-3.5 h-3.5 text-blue-400" />
+                            <span>Chrome Extension</span>
+                        </a>
                         <a
                             href="editor.html"
                             className="hover:text-slate-200 transition-colors"
                         >
-                            Studio
+                            Studio Demo
                         </a>
                         <a
                             href="https://github.com/Ace-Studios-Nepal/screenshot-stitcher"
