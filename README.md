@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📸 Screenshot Stitcher
+# 📸 Stitchify
 
 **Capture, stitch, annotate, and export clean web screenshots — directly in your browser.**
 
@@ -31,7 +31,7 @@
 
 ## 🌐 Chromium Compatibility & Architecture
 
-Screenshot Stitcher is **100% compatible with Chromium-based browsers** and strictly adheres to Google's **Manifest V3** standard.
+Stitchify is **100% compatible with Chromium-based browsers** and strictly adheres to Google's **Manifest V3** standard.
 
 ### Supported Chromium Browsers
 * 🟢 **Google Chrome** (v116+)
@@ -53,7 +53,7 @@ Screenshot Stitcher is **100% compatible with Chromium-based browsers** and stri
 
 ## 🚀 Browser Installation (Developer Mode)
 
-You can load and use Screenshot Stitcher directly without waiting for store approval.
+You can load and use Stitchify directly without waiting for store approval.
 
 ### 🔷 Google Chrome / Brave / Microsoft Edge / Arc / Opera
 
@@ -80,7 +80,7 @@ You can load and use Screenshot Stitcher directly without waiting for store appr
    * Click the **"Load unpacked"** button in the top toolbar.
    * Select the **`dist/`** directory (or your extracted release folder).
 5. **Pin & Use**:
-   * Click the puzzle icon in your browser toolbar, pin **Screenshot Stitcher**, and start capturing with `Alt + S`!
+   * Click the puzzle icon in your browser toolbar, pin **Stitchify**, and start capturing with `Alt + S`!
 
 ---
 
@@ -108,7 +108,7 @@ Or install manually in Developer Mode:
 
 ## ☁️ Deploying to Vercel (Web App & Demo)
 
-Screenshot Stitcher doubles as a standalone web application! The landing page (`index.html`) and canvas editor (`editor.html`) run directly in modern browsers with sample data and local image upload support.
+Stitchify doubles as a standalone web application! The landing page (`index.html`) and canvas editor (`editor.html`) run directly in modern browsers with sample data and local image upload support.
 
 ### One-Click Deploy or GitHub Integration:
 1. Push your repository to GitHub.

@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-    Layers,
     ShieldCheck,
     Zap,
     Sliders,
@@ -12,7 +11,9 @@ import {
     MousePointer,
     HelpCircle,
 } from 'lucide-react';
+import { StitchifyLogo } from '../components/StitchifyLogo';
 
+const SAJILOTOOL_URL = 'https://sajilotool.com';
 const FIREFOX_ADDON_URL = 'https://addons.mozilla.org/addon/screenshot-stitcher/';
 const CHROME_STORE_URL = 'https://chrome.google.com/webstore';
 
@@ -55,12 +56,21 @@ export const LandingPage: React.FC = () => {
             <header className="sticky top-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/20 border border-blue-400/30">
-                            <Layers className="w-5 h-5 text-white" />
+                        <StitchifyLogo className="w-9 h-9" />
+                        <div className="flex flex-col">
+                            <span className="font-bold text-lg tracking-tight text-white leading-none">
+                                Stitch<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">ify</span>
+                            </span>
+                            <a
+                                href={SAJILOTOOL_URL}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-[10px] text-slate-400 hover:text-blue-400 transition-colors font-medium mt-1 inline-flex items-center gap-0.5"
+                                title="Powered by SajiloTool"
+                            >
+                                <span>by sajilotool.com</span>
+                            </a>
                         </div>
-                        <span className="font-bold text-lg tracking-tight text-white">
-                            Screenshot Stitcher
-                        </span>
                     </div>
 
                     <nav className="hidden md:flex items-center gap-8 text-sm text-slate-400 font-medium">
@@ -122,10 +132,19 @@ export const LandingPage: React.FC = () => {
 
             {/* Hero Section */}
             <section className="pt-20 pb-16 px-4 sm:px-6 text-center max-w-4xl mx-auto">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium mb-6 animate-pulse">
-                    <Zap className="w-3.5 h-3.5" />
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium mb-6">
+                    <Zap className="w-3.5 h-3.5 flex-shrink-0" />
                     <span>
-                        Firefox & Chrome Extension • 100% Local & Free
+                        Powered by{' '}
+                        <a
+                            href={SAJILOTOOL_URL}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="font-semibold text-blue-300 hover:text-white underline underline-offset-2 transition-colors"
+                        >
+                            SajiloTool
+                        </a>
+                        {' '}• Chrome & Firefox Extension • 100% Local & Free
                     </span>
                 </div>
 
@@ -198,7 +217,14 @@ export const LandingPage: React.FC = () => {
                         </div>
                         <div className="bg-slate-900 px-6 py-1 rounded-md text-[11px] font-mono text-slate-400 border border-slate-800 flex items-center gap-1.5">
                             <ShieldCheck className="w-3 h-3 text-emerald-400" />
-                            <span>screenshot-stitcher.sajilotool.com</span>
+                            <a
+                                href={SAJILOTOOL_URL}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="hover:text-blue-400 transition-colors"
+                            >
+                                stitchify.sajilotool.com
+                            </a>
                         </div>
                         <div className="w-12" />
                     </div>
@@ -450,7 +476,7 @@ export const LandingPage: React.FC = () => {
                 <div className="space-y-4 text-xs sm:text-sm">
                     {[
                         {
-                            q: 'Does Screenshot Stitcher upload my images to any server?',
+                            q: 'Does Stitchify upload my images to any server?',
                             a: 'No. All captures, stitching, and annotations happen locally inside your browser using the HTML5 Canvas API and IndexedDB. Nothing is ever sent to an external server.',
                         },
                         {
@@ -459,15 +485,15 @@ export const LandingPage: React.FC = () => {
                         },
                         {
                             q: 'What browsers are supported?',
-                            a: 'Screenshot Stitcher officially supports Mozilla Firefox (available on Firefox Add-ons) as well as all modern Chromium-based browsers, including Google Chrome, Microsoft Edge, Brave, Arc, and Opera.',
+                            a: 'Stitchify officially supports Mozilla Firefox (available on Firefox Add-ons) as well as all modern Chromium-based browsers, including Google Chrome, Microsoft Edge, Brave, Arc, and Opera.',
                         },
                         {
                             q: 'Is there any limit to the number of screenshots I can stitch?',
                             a: 'We use IndexedDB instead of browser storage limits, so you can stitch dozens of high-res captures in one session.',
                         },
                         {
-                            q: 'Is this extension free?',
-                            a: 'Yes, Screenshot Stitcher is 100% free and open-source under the MIT license.',
+                            q: 'Is Stitchify free?',
+                            a: 'Yes, Stitchify is 100% free and open-source under the MIT license.',
                         },
                     ].map((faq, i) => (
                         <div
@@ -490,10 +516,10 @@ export const LandingPage: React.FC = () => {
             <section className="py-16 px-4 sm:px-6 border-t border-slate-900">
                 <div className="max-w-4xl mx-auto p-8 rounded-3xl bg-gradient-to-r from-blue-900/40 via-indigo-900/40 to-slate-900 border border-blue-500/30 text-center space-y-6">
                     <h2 className="text-2xl sm:text-3xl font-bold text-white">
-                        Ready to stitch your first screenshot?
+                        Ready to stitchify your screenshots?
                     </h2>
                     <p className="text-sm text-slate-300 max-w-md mx-auto">
-                        Install the extension on Firefox or Chrome, or jump right into the browser
+                        Install Stitchify on Firefox or Chrome, or jump right into the browser
                         Studio demo.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -528,14 +554,37 @@ export const LandingPage: React.FC = () => {
             {/* Footer */}
             <footer className="py-8 px-4 sm:px-6 border-t border-slate-900 text-center text-xs text-slate-400">
                 <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div className="flex items-center gap-2">
-                        <Layers className="w-4 h-4 text-blue-500" />
-                        <span className="font-semibold text-slate-300">
-                            Screenshot Stitcher
+                    <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-2.5">
+                        <div className="flex items-center gap-2">
+                            <StitchifyLogo className="w-5 h-5" />
+                            <span className="font-semibold text-slate-300">
+                                Stitchify
+                            </span>
+                            <span>• MIT License</span>
+                        </div>
+                        <span className="hidden sm:inline text-slate-600">•</span>
+                        <span>
+                            Powered by{' '}
+                            <a
+                                href={SAJILOTOOL_URL}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-blue-400 hover:text-blue-300 font-medium underline underline-offset-2 transition-colors"
+                            >
+                                sajilotool.com
+                            </a>
                         </span>
-                        <span>• MIT License</span>
                     </div>
                     <div className="flex flex-wrap items-center justify-center gap-4">
+                        <a
+                            href={SAJILOTOOL_URL}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="hover:text-slate-200 transition-colors flex items-center gap-1 text-slate-300"
+                        >
+                            <span>SajiloTool</span>
+                            <ExternalLink className="w-3 h-3 opacity-60" />
+                        </a>
                         <a
                             href={FIREFOX_ADDON_URL}
                             target="_blank"

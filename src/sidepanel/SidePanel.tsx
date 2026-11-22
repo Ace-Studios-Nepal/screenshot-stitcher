@@ -2,12 +2,12 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { CaptureItem } from '../types';
 import { getAllCaptures, deleteCapture, clearAllCaptures } from '../storage/db';
 import { ConfirmModal } from '../components/Modal';
+import { StitchifyLogo } from '../components/StitchifyLogo';
 import {
   Camera,
   ExternalLink,
   Trash2,
   RotateCcw,
-  Layers,
   Sparkles,
   Command,
 } from 'lucide-react';
@@ -80,11 +80,9 @@ export const SidePanel: React.FC = () => {
       {/* Header */}
       <div className="p-3.5 bg-white border-b border-slate-200 flex items-center justify-between shadow-xs">
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded bg-blue-600 flex items-center justify-center text-white">
-            <Layers className="w-3.5 h-3.5" />
-          </div>
+          <StitchifyLogo className="w-6 h-6" />
           <span className="font-bold text-sm tracking-tight text-slate-900">
-            Screenshot Stitcher
+            Stitch<span className="text-blue-600">ify</span>
           </span>
         </div>
 

@@ -39,12 +39,12 @@ import { StitchControls } from './components/StitchControls';
 import { AnnotationToolbar } from './components/AnnotationToolbar';
 import { CanvasWorkspace } from './components/CanvasWorkspace';
 import { ConfirmModal, AlertModal } from '../components/Modal';
+import { StitchifyLogo } from '../components/StitchifyLogo';
 import {
   Download,
   FileText,
   Camera,
   RotateCcw,
-  Layers,
   Sparkles,
   ChevronDown,
   Upload,
@@ -411,11 +411,10 @@ export const EditorApp: React.FC = () => {
       <header className="h-14 bg-slate-900 border-b border-slate-800 px-5 flex items-center justify-between flex-shrink-0 z-30">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center shadow-md">
-              <Layers className="w-4 h-4 text-white" />
-            </div>
+            <StitchifyLogo className="w-8 h-8" />
             <span className="font-bold text-base tracking-tight text-white">
-              Screenshot Stitcher <span className="text-xs font-normal text-blue-400 ml-1">Studio</span>
+              Stitch<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">ify</span>{' '}
+              <span className="text-xs font-normal text-blue-400 ml-1">Studio</span>
             </span>
           </div>
 

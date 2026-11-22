@@ -8,7 +8,7 @@ describe('Manifest V3 Chromium & Cross-Browser Compatibility', () => {
 
   it('uses Manifest V3 specification', () => {
     expect(manifest.manifest_version).toBe(3);
-    expect(manifest.name).toBe('Screenshot Stitcher');
+    expect(manifest.name).toBe('Stitchify');
     expect(manifest.version).toBeDefined();
   });
 

@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { AnnotationItem, AnnotationTool } from '../../types';
 import { renderAnnotations } from '../../utils/annotation';
 import { TextPromptModal } from '../../components/Modal';
+import { StitchifyLogo } from '../../components/StitchifyLogo';
 import {
   ZoomIn,
   ZoomOut,
@@ -9,7 +10,6 @@ import {
   RotateCcw,
   Sparkles,
   Upload,
-  Layers,
 } from 'lucide-react';
 
 interface Props {
@@ -335,13 +335,11 @@ export const CanvasWorkspace: React.FC<Props> = ({
           ) : (
             /* Rich Welcome & Demo Action Center */
             <div className="flex flex-col items-center justify-center max-w-lg mx-auto text-center p-8 rounded-3xl bg-slate-900/80 border border-slate-800 shadow-2xl my-auto space-y-6">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-xl shadow-blue-500/20 border border-blue-400/30">
-                <Layers className="w-8 h-8" />
-              </div>
+              <StitchifyLogo className="w-16 h-16" />
 
               <div className="space-y-2">
                 <h3 className="text-xl font-bold text-white tracking-tight">
-                  Screenshot Stitcher Studio
+                  Stitch<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">ify</span> Studio
                 </h3>
                 <p className="text-xs text-slate-400 leading-relaxed max-w-sm mx-auto">
                   Stitch multiple viewport screenshots into one vertical image, configure custom gap spacing, and draw annotations.

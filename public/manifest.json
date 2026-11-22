@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Screenshot Stitcher",
+  "name": "Stitchify",
   "version": "1.0.0",
   "description": "Capture multiple webpage sections, vertically stitch them, annotate, and export as PNG or PDF.",
   "permissions": [
@@ -24,7 +24,7 @@
   },
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Screenshot Stitcher",
+    "default_title": "Stitchify",
     "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",
