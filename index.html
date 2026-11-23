@@ -11,9 +11,22 @@
     <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
     <link rel="icon" type="image/png" href="/icons/icon48.png" />
     <link rel="apple-touch-icon" href="/icons/icon128.png" />
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('stitchify-theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (saved === 'dark' || (!saved && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
     <link rel="stylesheet" href="/src/index.css" />
   </head>
-  <body class="bg-slate-950 text-slate-100 antialiased min-h-screen">
+  <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased min-h-screen transition-colors duration-200">
     <div id="root"></div>
     <script type="module" src="/src/landing/main.tsx"></script>
   </body>

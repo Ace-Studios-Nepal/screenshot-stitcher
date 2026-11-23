@@ -34,26 +34,26 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-in fade-in duration-150">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 dark:bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-150">
       <div
-        className="w-full max-w-sm bg-slate-900 border border-slate-700/80 rounded-2xl p-5 shadow-2xl text-slate-100 transform transition-all scale-100"
+        className="w-full max-w-sm bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 shadow-2xl text-slate-800 dark:text-slate-100 transform transition-all scale-100"
         role="dialog"
       >
         <div className="flex items-start gap-3">
           <div
             className={`p-2 rounded-xl flex-shrink-0 ${
-              isDestructive ? 'bg-red-500/10 text-red-400' : 'bg-blue-500/10 text-blue-400'
+              isDestructive ? 'bg-red-500/10 text-red-600 dark:text-red-400' : 'bg-blue-500/10 text-blue-600 dark:text-blue-400'
             }`}
           >
             {isDestructive ? <AlertTriangle className="w-5 h-5" /> : <Info className="w-5 h-5" />}
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="text-sm font-semibold text-white tracking-tight">{title}</h3>
-            <p className="mt-1 text-xs text-slate-400 leading-relaxed">{message}</p>
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-white tracking-tight">{title}</h3>
+            <p className="mt-1 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{message}</p>
           </div>
           <button
             onClick={onCancel}
-            className="text-slate-400 hover:text-slate-200 p-1 rounded-lg hover:bg-slate-800 transition-colors"
+            className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
@@ -63,7 +63,7 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
           <button
             type="button"
             onClick={onCancel}
-            className="px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
+            className="px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-transparent transition-colors"
           >
             {cancelText}
           </button>
@@ -113,10 +113,10 @@ export const AlertModal: React.FC<AlertModalProps> = ({
   if (!isOpen) return null;
 
   const iconMap = {
-    error: <AlertCircle className="w-5 h-5 text-red-400" />,
-    warning: <AlertTriangle className="w-5 h-5 text-amber-400" />,
-    info: <Info className="w-5 h-5 text-blue-400" />,
-    success: <CheckCircle className="w-5 h-5 text-emerald-400" />,
+    error: <AlertCircle className="w-5 h-5 text-red-500 dark:text-red-400" />,
+    warning: <AlertTriangle className="w-5 h-5 text-amber-500 dark:text-amber-400" />,
+    info: <Info className="w-5 h-5 text-blue-500 dark:text-blue-400" />,
+    success: <CheckCircle className="w-5 h-5 text-emerald-500 dark:text-emerald-400" />,
   };
 
   const bgMap = {
@@ -127,19 +127,19 @@ export const AlertModal: React.FC<AlertModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-in fade-in duration-150">
-      <div className="w-full max-w-sm bg-slate-900 border border-slate-700/80 rounded-2xl p-5 shadow-2xl text-slate-100">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 dark:bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-150">
+      <div className="w-full max-w-sm bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 shadow-2xl text-slate-800 dark:text-slate-100 transition-colors">
         <div className="flex items-start gap-3">
           <div className={`p-2 rounded-xl flex-shrink-0 ${bgMap[type]}`}>{iconMap[type]}</div>
           <div className="flex-1 min-w-0">
-            <h3 className="text-sm font-semibold text-white tracking-tight">{title}</h3>
-            <p className="mt-1 text-xs text-slate-400 leading-relaxed whitespace-pre-line">
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-white tracking-tight">{title}</h3>
+            <p className="mt-1 text-xs text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line">
               {message}
             </p>
           </div>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-slate-200 p-1 rounded-lg hover:bg-slate-800 transition-colors"
+            className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
@@ -149,7 +149,7 @@ export const AlertModal: React.FC<AlertModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-white transition-colors"
+            className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-white border border-slate-200 dark:border-transparent transition-colors"
           >
             {buttonText}
           </button>
@@ -193,18 +193,18 @@ export const TextPromptModal: React.FC<TextPromptModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-in fade-in duration-150">
-      <div className="w-full max-w-sm bg-slate-900 border border-slate-700/80 rounded-2xl p-5 shadow-2xl text-slate-100">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 dark:bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-150">
+      <div className="w-full max-w-sm bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 shadow-2xl text-slate-800 dark:text-slate-100 transition-colors">
         <div className="flex items-center gap-2.5 mb-3">
-          <div className="p-2 rounded-xl bg-blue-500/10 text-blue-400">
+          <div className="p-2 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400">
             <Type className="w-4 h-4" />
           </div>
-          <h3 className="text-sm font-semibold text-white">Add Text Callout</h3>
+          <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Add Text Callout</h3>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-medium text-slate-400 mb-1.5">
+            <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">
               Annotation Text
             </label>
             <input
@@ -213,13 +213,13 @@ export const TextPromptModal: React.FC<TextPromptModalProps> = ({
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder="e.g. Bug in navigation bar..."
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             />
           </div>
 
           <div className="flex items-center justify-between">
-            <label className="text-xs font-medium text-slate-400">Font Size</label>
-            <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-lg border border-slate-800">
+            <label className="text-xs font-medium text-slate-600 dark:text-slate-400">Font Size</label>
+            <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-950 p-1 rounded-lg border border-slate-200 dark:border-slate-800">
               {[
                 { label: 'S', size: 18 },
                 { label: 'M', size: 24 },
@@ -232,7 +232,7 @@ export const TextPromptModal: React.FC<TextPromptModalProps> = ({
                   className={`w-7 h-6 rounded text-xs font-semibold transition-all ${
                     fontSize === opt.size
                       ? 'bg-blue-600 text-white shadow-xs'
-                      : 'text-slate-400 hover:text-white'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
                   {opt.label}
@@ -243,13 +243,13 @@ export const TextPromptModal: React.FC<TextPromptModalProps> = ({
 
           {/* Preview */}
           {text.trim() && (
-            <div className="p-2.5 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-center">
+            <div className="p-2.5 bg-slate-100 dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-center">
               <span
                 style={{
                   color: strokeColor,
                   fontSize: `${Math.min(fontSize, 20)}px`,
                 }}
-                className="font-semibold bg-slate-800/90 px-2 py-0.5 rounded-md truncate max-w-full"
+                className="font-semibold bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-transparent px-2 py-0.5 rounded-md truncate max-w-full"
               >
                 {text}
               </span>
@@ -260,7 +260,7 @@ export const TextPromptModal: React.FC<TextPromptModalProps> = ({
             <button
               type="button"
               onClick={onCancel}
-              className="px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+              className="px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
             >
               Cancel
             </button>

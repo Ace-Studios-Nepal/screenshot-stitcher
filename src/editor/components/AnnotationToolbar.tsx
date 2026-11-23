@@ -65,28 +65,28 @@ export const AnnotationToolbar: React.FC<Props> = ({
   ];
 
   return (
-    <div className="flex items-center gap-4 px-4 py-2 bg-white/90 backdrop-blur-md rounded-2xl border border-slate-200/80 shadow-lg text-slate-700">
+    <div className="flex items-center gap-3 sm:gap-4 px-3 sm:px-4 py-2 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-lg text-slate-700 dark:text-slate-200 transition-colors">
       {/* Tool Selector */}
-      <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl">
+      <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
         {tools.map((t) => (
           <button
             key={t.id}
             type="button"
             onClick={() => onSelectTool(t.id)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+            className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
               activeTool === t.id
-                ? 'bg-white text-blue-600 shadow-xs font-semibold'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+                ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-xs font-semibold'
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-700/50'
             }`}
             title={t.label}
           >
             {t.icon}
-            <span className="hidden sm:inline">{t.label}</span>
+            <span className="hidden md:inline">{t.label}</span>
           </button>
         ))}
       </div>
 
-      <div className="h-6 w-px bg-slate-200" />
+      <div className="h-6 w-px bg-slate-200 dark:bg-slate-800" />
 
       {/* Color Palette */}
       {activeTool !== 'select' && (
@@ -98,7 +98,7 @@ export const AnnotationToolbar: React.FC<Props> = ({
                 type="button"
                 onClick={() => onSelectColor(color)}
                 style={{ backgroundColor: color }}
-                className={`w-5 h-5 rounded-full border border-slate-300 transition-transform ${
+                className={`w-5 h-5 rounded-full border border-slate-300 dark:border-slate-600 transition-transform ${
                   strokeColor === color
                     ? 'ring-2 ring-blue-500 ring-offset-2 scale-110'
                     : 'hover:scale-110'
@@ -109,7 +109,7 @@ export const AnnotationToolbar: React.FC<Props> = ({
           </div>
 
           {/* Stroke Width Selector */}
-          <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg">
+          <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
             {STROKE_WIDTHS.map((w) => (
               <button
                 key={w}
@@ -117,8 +117,8 @@ export const AnnotationToolbar: React.FC<Props> = ({
                 onClick={() => onSelectStrokeWidth(w)}
                 className={`w-7 h-6 flex items-center justify-center rounded text-xs font-semibold transition-all ${
                   strokeWidth === w
-                    ? 'bg-white text-blue-600 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 {w}px
@@ -126,7 +126,7 @@ export const AnnotationToolbar: React.FC<Props> = ({
             ))}
           </div>
 
-          <div className="h-6 w-px bg-slate-200" />
+          <div className="h-6 w-px bg-slate-200 dark:bg-slate-800" />
         </>
       )}
 
@@ -136,7 +136,7 @@ export const AnnotationToolbar: React.FC<Props> = ({
           type="button"
           onClick={onUndo}
           disabled={!canUndo}
-          className="p-1.5 rounded-lg hover:bg-slate-100 disabled:opacity-30 disabled:hover:bg-transparent text-slate-600 transition-colors"
+          className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-30 disabled:hover:bg-transparent text-slate-600 dark:text-slate-300 transition-colors"
           title="Undo (Ctrl+Z)"
         >
           <Undo2 className="w-4 h-4" />
@@ -145,7 +145,7 @@ export const AnnotationToolbar: React.FC<Props> = ({
           type="button"
           onClick={onRedo}
           disabled={!canRedo}
-          className="p-1.5 rounded-lg hover:bg-slate-100 disabled:opacity-30 disabled:hover:bg-transparent text-slate-600 transition-colors"
+          className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-30 disabled:hover:bg-transparent text-slate-600 dark:text-slate-300 transition-colors"
           title="Redo (Ctrl+Y)"
         >
           <Redo2 className="w-4 h-4" />
@@ -154,7 +154,7 @@ export const AnnotationToolbar: React.FC<Props> = ({
           <button
             type="button"
             onClick={onClearAnnotations}
-            className="p-1.5 rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-600 transition-colors"
+            className="p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-950/40 text-slate-400 hover:text-red-600 dark:hover:text-red-400 transition-colors"
             title="Clear all annotations"
           >
             <Trash2 className="w-4 h-4" />

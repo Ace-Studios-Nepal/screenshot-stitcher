@@ -10,26 +10,62 @@
     />
     <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
     <link rel="icon" type="image/png" href="/icons/icon48.png" />
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('stitchify-theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (saved === 'dark' || (!saved && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
     <link rel="stylesheet" href="/src/index.css" />
   </head>
-  <body class="bg-slate-950 text-slate-100 antialiased min-h-screen selection:bg-blue-600 selection:text-white">
+  <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased min-h-screen selection:bg-blue-600 selection:text-white transition-colors duration-200">
     <!-- Background Glow -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
-      <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-blue-600/15 blur-[120px] rounded-full"></div>
+      <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-blue-500/10 dark:bg-blue-600/15 blur-[120px] rounded-full"></div>
     </div>
 
     <!-- Header -->
-    <header class="sticky top-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+    <header class="sticky top-0 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <a href="index.html" class="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
           <img src="/icons/icon48.png" alt="Stitchify" class="w-8 h-8 rounded-lg shadow-sm" />
-          <span class="font-bold text-lg tracking-tight text-white">
-            Stitch<span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">ify</span>
+          <span class="font-bold text-lg tracking-tight text-slate-900 dark:text-white">
+            Stitch<span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">ify</span>
           </span>
         </a>
-        <div class="flex items-center gap-4 text-xs font-medium">
-          <a href="index.html" class="text-slate-400 hover:text-white transition-colors">← Back to Home</a>
-          <a href="editor.html" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-colors">Open Studio</a>
+        <div class="flex items-center gap-3 sm:gap-4 text-xs font-medium">
+          <a href="index.html" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">← Back to Home</a>
+          <a href="editor.html" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-colors shadow-xs">Open Studio</a>
+          <!-- Theme Toggle Button -->
+          <button
+            id="theme-toggle-btn"
+            type="button"
+            aria-label="Toggle light/dark theme"
+            title="Toggle theme"
+            class="p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-amber-400 shadow-xs transition-colors cursor-pointer"
+          >
+            <svg id="theme-sun-icon" class="w-4 h-4 hidden dark:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2"></path>
+              <path d="M12 20v2"></path>
+              <path d="m4.93 4.93 1.41 1.41"></path>
+              <path d="m17.66 17.66 1.41 1.41"></path>
+              <path d="M2 12h2"></path>
+              <path d="M20 12h2"></path>
+              <path d="m6.34 17.66-1.41 1.41"></path>
+              <path d="m19.07 4.93-1.41 1.41"></path>
+            </svg>
+            <svg id="theme-moon-icon" class="w-4 h-4 block dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+            </svg>
+          </button>
         </div>
       </div>
     </header>
@@ -38,27 +74,27 @@
     <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
       <div class="space-y-8">
         <div>
-          <span class="inline-block px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium mb-3">
+          <span class="inline-block px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 text-xs font-semibold mb-3">
             Legal & Compliance
           </span>
-          <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Privacy Policy
           </h1>
-          <p class="text-xs text-slate-400 mt-2 font-mono">
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 font-mono">
             Last updated: November 23, 2026 • Effective date: November 23, 2026
           </p>
         </div>
 
-        <div class="p-4 rounded-xl bg-blue-950/40 border border-blue-800/40 text-sm text-blue-200 leading-relaxed">
+        <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800/40 text-sm text-blue-900 dark:text-blue-200 leading-relaxed shadow-xs">
           <strong>Summary:</strong> Stitchify is 100% client-side. We do not operate any tracking servers, analytics, or remote image processing. Every screenshot, annotation, and export stays strictly on your computer in local memory and browser storage (IndexedDB).
         </div>
 
         <section class="space-y-4">
-          <h2 class="text-xl font-bold text-white border-b border-slate-800 pb-2">1. 100% Client-Side & Local Processing</h2>
-          <p class="text-sm text-slate-300 leading-relaxed">
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">1. 100% Client-Side & Local Processing</h2>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
             Stitchify is built from the ground up to respect user confidentiality.
           </p>
-          <ul class="list-disc list-inside space-y-2 text-sm text-slate-300 ml-2">
+          <ul class="list-disc list-inside space-y-2 text-sm text-slate-600 dark:text-slate-300 ml-2">
             <li><strong>Zero Remote Servers:</strong> No backend APIs, telemetry endpoints, or external processing pipelines exist.</li>
             <li><strong>Zero Tracking or Analytics:</strong> We do not log usage events, IP addresses, browsing habits, or device telemetry.</li>
             <li><strong>Zero Cloud Image Storage:</strong> Screenshots taken through Stitchify are never transmitted across the network.</li>
@@ -66,65 +102,65 @@
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-xl font-bold text-white border-b border-slate-800 pb-2">2. Data We Process and Where It Lives</h2>
-          <div class="space-y-3 text-sm text-slate-300 leading-relaxed">
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">2. Data We Process and Where It Lives</h2>
+          <div class="space-y-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
             <p>
               When using Stitchify, all operations occur solely within your browser:
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
-              <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
-                <h3 class="font-semibold text-white">📸 Captured Viewports</h3>
-                <p class="text-xs text-slate-400">Captured images are encoded as data URLs and saved in your local IndexedDB (<code class="text-blue-300">stitchify-db</code>) so you can arrange and stitch them.</p>
+              <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 shadow-xs">
+                <h3 class="font-semibold text-slate-900 dark:text-white">📸 Captured Viewports</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Captured images are encoded as data URLs and saved in your local IndexedDB (<code class="text-blue-600 dark:text-blue-300 font-mono">stitchify-db</code>) so you can arrange and stitch them.</p>
               </div>
-              <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
-                <h3 class="font-semibold text-white">🏷️ Page Titles & URLs</h3>
-                <p class="text-xs text-slate-400">Saved only alongside each thumbnail in local storage to label your captures and name exported files (e.g., <code class="text-blue-300">stitched-screenshot-*.png</code>).</p>
+              <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 shadow-xs">
+                <h3 class="font-semibold text-slate-900 dark:text-white">🏷️ Page Titles & URLs</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Saved only alongside each thumbnail in local storage to label your captures and name exported files (e.g., <code class="text-blue-600 dark:text-blue-300 font-mono">stitched-screenshot-*.png</code>).</p>
               </div>
-              <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
-                <h3 class="font-semibold text-white">✏️ Annotation Layers</h3>
-                <p class="text-xs text-slate-400">Arrows, shapes, callout text, and pen strokes are rendered on local HTML5 Canvas and saved in IndexedDB for session continuity.</p>
+              <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 shadow-xs">
+                <h3 class="font-semibold text-slate-900 dark:text-white">✏️ Annotation Layers</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Arrows, shapes, callout text, and pen strokes are rendered on local HTML5 Canvas and saved in IndexedDB for session continuity.</p>
               </div>
-              <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
-                <h3 class="font-semibold text-white">⚙️ User Preferences</h3>
-                <p class="text-xs text-slate-400">Gap spacing, canvas padding, and background color choices are stored locally using <code class="text-blue-300">chrome.storage.local</code>.</p>
+              <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 shadow-xs">
+                <h3 class="font-semibold text-slate-900 dark:text-white">⚙️ User Preferences</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Gap spacing, canvas padding, and background color choices are stored locally using <code class="text-blue-600 dark:text-blue-300 font-mono">chrome.storage.local</code>.</p>
               </div>
             </div>
           </div>
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-xl font-bold text-white border-b border-slate-800 pb-2">3. Browser Permissions Explained</h2>
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">3. Browser Permissions Explained</h2>
           <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs text-slate-300 border border-slate-800 rounded-xl overflow-hidden">
-              <thead class="bg-slate-900 text-slate-200 border-b border-slate-800 font-semibold">
+            <table class="w-full text-left text-xs text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-xs">
+              <thead class="bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-200 border-b border-slate-200 dark:border-slate-800 font-semibold">
                 <tr>
                   <th class="p-3">Permission</th>
                   <th class="p-3">Purpose & Justification</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-slate-800/80">
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-800/80 bg-white dark:bg-slate-900/50">
                 <tr>
-                  <td class="p-3 font-mono text-blue-400">storage</td>
+                  <td class="p-3 font-mono font-semibold text-blue-600 dark:text-blue-400">storage</td>
                   <td class="p-3">Persists captures, annotations, and spacing settings in local IndexedDB / storage.</td>
                 </tr>
                 <tr>
-                  <td class="p-3 font-mono text-blue-400">activeTab</td>
+                  <td class="p-3 font-mono font-semibold text-blue-600 dark:text-blue-400">activeTab</td>
                   <td class="p-3">Allows visible tab capture and page metadata retrieval when you initiate a screenshot.</td>
                 </tr>
                 <tr>
-                  <td class="p-3 font-mono text-blue-400">scripting</td>
-                  <td class="p-3">Reads <code class="text-slate-200">window.devicePixelRatio</code> to render stitched images at native HiDPI resolution.</td>
+                  <td class="p-3 font-mono font-semibold text-blue-600 dark:text-blue-400">scripting</td>
+                  <td class="p-3">Reads <code class="text-slate-800 dark:text-slate-200 font-mono">window.devicePixelRatio</code> to render stitched images at native HiDPI resolution.</td>
                 </tr>
                 <tr>
-                  <td class="p-3 font-mono text-blue-400">sidePanel</td>
+                  <td class="p-3 font-mono font-semibold text-blue-600 dark:text-blue-400">sidePanel</td>
                   <td class="p-3">Displays the capture reel in a persistent dock adjacent to your web tabs.</td>
                 </tr>
                 <tr>
-                  <td class="p-3 font-mono text-blue-400">downloads</td>
+                  <td class="p-3 font-mono font-semibold text-blue-600 dark:text-blue-400">downloads</td>
                   <td class="p-3">Saves exported PNG and PDF files directly to your computer's Downloads directory.</td>
                 </tr>
                 <tr>
-                  <td class="p-3 font-mono text-blue-400">&lt;all_urls&gt;</td>
+                  <td class="p-3 font-mono font-semibold text-blue-600 dark:text-blue-400">&lt;all_urls&gt;</td>
                   <td class="p-3">Enables visible viewport capture across any website via the side panel and keyboard shortcuts. In Chromium MV3, side panels do not grant activeTab permissions on user clicks.</td>
                 </tr>
               </tbody>
@@ -133,30 +169,30 @@
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-xl font-bold text-white border-b border-slate-800 pb-2">4. User Control & Data Deletion</h2>
-          <p class="text-sm text-slate-300 leading-relaxed">
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">4. User Control & Data Deletion</h2>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
             You retain absolute control over all data created with Stitchify. You can delete single captures by clicking the trash icon in the side panel or editor, or clear all captures with one click. Uninstalling Stitchify or clearing your browser's site storage instantly and permanently purges all local data.
           </p>
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-xl font-bold text-white border-b border-slate-800 pb-2">5. Open Source Transparency</h2>
-          <p class="text-sm text-slate-300 leading-relaxed">
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">5. Open Source Transparency</h2>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
             Stitchify is transparent and open source under the MIT License. Anyone can inspect and audit the complete codebase on GitHub:
           </p>
           <a
             href="https://github.com/Ace-Studios-Nepal/screenshot-stitcher"
             target="_blank"
             rel="noreferrer"
-            class="inline-flex items-center gap-2 text-xs font-medium text-blue-400 hover:text-blue-300 underline underline-offset-4"
+            class="inline-flex items-center gap-2 text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 underline underline-offset-4"
           >
             github.com/Ace-Studios-Nepal/screenshot-stitcher →
           </a>
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-xl font-bold text-white border-b border-slate-800 pb-2">6. Contact Information</h2>
-          <p class="text-sm text-slate-300 leading-relaxed">
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">6. Contact Information</h2>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
             If you have questions or inquiries regarding this Privacy Policy, please open an issue on our official GitHub repository or reach out via our website:
           </p>
           <div class="flex flex-wrap items-center gap-4 text-xs">
@@ -164,7 +200,7 @@
               href="https://github.com/Ace-Studios-Nepal/screenshot-stitcher/issues"
               target="_blank"
               rel="noreferrer"
-              class="px-3.5 py-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 hover:text-white hover:border-slate-700 transition-colors"
+              class="px-3.5 py-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-slate-700 shadow-xs transition-colors"
             >
               GitHub Issue Tracker
             </a>
@@ -172,7 +208,7 @@
               href="https://sajilotool.com"
               target="_blank"
               rel="noreferrer"
-              class="px-3.5 py-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 hover:text-white hover:border-slate-700 transition-colors"
+              class="px-3.5 py-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-slate-700 shadow-xs transition-colors"
             >
               sajilotool.com
             </a>
@@ -182,15 +218,33 @@
     </main>
 
     <!-- Footer -->
-    <footer class="mt-16 py-8 border-t border-slate-900 text-center text-xs text-slate-400">
+    <footer class="mt-16 py-8 border-t border-slate-200 dark:border-slate-900 text-center text-xs text-slate-500 dark:text-slate-400">
       <div class="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
         <p>© 2026 Stitchify • Developed by Ace Studios Nepal</p>
         <div class="flex items-center gap-4">
-          <a href="index.html" class="hover:text-slate-200 transition-colors">Home</a>
-          <a href="editor.html" class="hover:text-slate-200 transition-colors">Studio</a>
-          <a href="https://github.com/Ace-Studios-Nepal/screenshot-stitcher" class="hover:text-slate-200 transition-colors">GitHub</a>
+          <a href="index.html" class="hover:text-slate-800 dark:hover:text-slate-200 transition-colors">Home</a>
+          <a href="editor.html" class="hover:text-slate-800 dark:hover:text-slate-200 transition-colors">Studio</a>
+          <a href="https://github.com/Ace-Studios-Nepal/screenshot-stitcher" class="hover:text-slate-800 dark:hover:text-slate-200 transition-colors">GitHub</a>
         </div>
       </div>
     </footer>
+
+    <!-- Theme Toggle Handler Script -->
+    <script>
+      (function() {
+        var btn = document.getElementById('theme-toggle-btn');
+        if (!btn) return;
+        btn.addEventListener('click', function() {
+          var isDark = document.documentElement.classList.contains('dark');
+          if (isDark) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('stitchify-theme', 'light');
+          } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('stitchify-theme', 'dark');
+          }
+        });
+      })();
+    </script>
   </body>
 </html>

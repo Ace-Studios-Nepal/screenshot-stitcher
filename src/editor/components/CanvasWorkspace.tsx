@@ -241,38 +241,38 @@ export const CanvasWorkspace: React.FC<Props> = ({
   const displayHeight = baseCanvas ? Math.round(baseCanvas.height * zoom) : 0;
 
   return (
-    <div className="relative w-full h-full flex flex-col bg-slate-950 overflow-hidden select-none">
+    <div className="relative w-full h-full flex flex-col bg-slate-200/60 dark:bg-slate-950 overflow-hidden select-none transition-colors">
       {/* Zoom / View Controls Floating Overlay */}
       {baseCanvas && (
-        <div className="absolute bottom-6 right-6 z-20 flex items-center gap-1.5 px-3 py-1.5 bg-slate-900/90 backdrop-blur-md rounded-xl border border-slate-700/80 shadow-xl text-slate-300">
+        <div className="absolute bottom-6 right-6 z-20 flex items-center gap-1.5 px-3 py-1.5 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-xl border border-slate-200 dark:border-slate-700/80 shadow-xl text-slate-700 dark:text-slate-300 transition-colors">
           <button
             onClick={() => setZoom((z) => Math.max(0.1, parseFloat((z - 0.1).toFixed(2))))}
-            className="p-1 rounded hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"
+            className="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors"
             title="Zoom Out"
           >
             <ZoomOut className="w-4 h-4" />
           </button>
-          <span className="font-mono text-xs w-12 text-center text-slate-200">
+          <span className="font-mono text-xs w-12 text-center text-slate-800 dark:text-slate-200 font-medium">
             {Math.round(zoom * 100)}%
           </span>
           <button
             onClick={() => setZoom((z) => Math.min(3, parseFloat((z + 0.1).toFixed(2))))}
-            className="p-1 rounded hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"
+            className="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors"
             title="Zoom In"
           >
             <ZoomIn className="w-4 h-4" />
           </button>
-          <div className="h-4 w-px bg-slate-700 mx-1" />
+          <div className="h-4 w-px bg-slate-200 dark:bg-slate-700 mx-1" />
           <button
             onClick={fitToWidth}
-            className="p-1 rounded hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"
+            className="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors"
             title="Fit to Width"
           >
             <Maximize className="w-4 h-4" />
           </button>
           <button
             onClick={() => setZoom(1)}
-            className="p-1 rounded hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"
+            className="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors"
             title="Reset to 100%"
           >
             <RotateCcw className="w-4 h-4" />
@@ -334,14 +334,14 @@ export const CanvasWorkspace: React.FC<Props> = ({
             </div>
           ) : (
             /* Rich Welcome & Demo Action Center */
-            <div className="flex flex-col items-center justify-center max-w-lg mx-auto text-center p-8 rounded-3xl bg-slate-900/80 border border-slate-800 shadow-2xl my-auto space-y-6">
+            <div className="flex flex-col items-center justify-center max-w-lg mx-auto text-center p-8 rounded-3xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xl my-auto space-y-6 transition-colors">
               <StitchifyLogo className="w-16 h-16" />
 
               <div className="space-y-2">
-                <h3 className="text-xl font-bold text-white tracking-tight">
-                  Stitch<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">ify</span> Studio
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
+                  Stitch<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">ify</span> Studio
                 </h3>
-                <p className="text-xs text-slate-400 leading-relaxed max-w-sm mx-auto">
+                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed max-w-sm mx-auto">
                   Stitch multiple viewport screenshots into one vertical image, configure custom gap spacing, and draw annotations.
                 </p>
               </div>
@@ -360,16 +360,16 @@ export const CanvasWorkspace: React.FC<Props> = ({
                 <button
                   type="button"
                   onClick={onUploadClick}
-                  className="w-full sm:flex-1 py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full sm:flex-1 py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-700 transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Upload className="w-4 h-4 text-slate-400" />
                   <span>Upload Images</span>
                 </button>
               </div>
 
-              <div className="pt-2 border-t border-slate-800/80 text-[11px] text-slate-500">
+              <div className="pt-2 border-t border-slate-100 dark:border-slate-800/80 text-[11px] text-slate-500">
                 <span>In Chrome? Use the extension side panel or shortcut </span>
-                <kbd className="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[10px] border border-slate-700">
+                <kbd className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono text-[10px] border border-slate-200 dark:border-slate-700">
                   Alt+S
                 </kbd>
                 <span> to capture live pages.</span>

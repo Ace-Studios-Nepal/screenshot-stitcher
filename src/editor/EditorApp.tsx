@@ -40,6 +40,7 @@ import { AnnotationToolbar } from './components/AnnotationToolbar';
 import { CanvasWorkspace } from './components/CanvasWorkspace';
 import { ConfirmModal, AlertModal } from '../components/Modal';
 import { StitchifyLogo } from '../components/StitchifyLogo';
+import { ThemeToggle } from '../components/ThemeToggle';
 import {
   Download,
   FileText,
@@ -396,7 +397,7 @@ export const EditorApp: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col h-screen w-screen bg-slate-950 text-slate-100 overflow-hidden font-sans">
+    <div className="flex flex-col h-screen w-screen bg-slate-100 dark:bg-slate-950 text-slate-800 dark:text-slate-100 overflow-hidden font-sans transition-colors duration-200">
       {/* Hidden File Input for Image Upload */}
       <input
         ref={fileInputRef}
@@ -408,29 +409,29 @@ export const EditorApp: React.FC = () => {
       />
 
       {/* Top Navbar */}
-      <header className="h-14 bg-slate-900 border-b border-slate-800 px-5 flex items-center justify-between flex-shrink-0 z-30">
+      <header className="h-14 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 sm:px-5 flex items-center justify-between flex-shrink-0 z-30 transition-colors">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
             <StitchifyLogo className="w-8 h-8" />
-            <span className="font-bold text-base tracking-tight text-white">
-              Stitch<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">ify</span>{' '}
-              <span className="text-xs font-normal text-blue-400 ml-1">Studio</span>
+            <span className="font-bold text-base tracking-tight text-slate-900 dark:text-white">
+              Stitch<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">ify</span>{' '}
+              <span className="text-xs font-normal text-blue-600 dark:text-blue-400 ml-1">Studio</span>
             </span>
           </div>
 
-          <div className="h-4 w-px bg-slate-800 mx-2" />
+          <div className="h-4 w-px bg-slate-200 dark:bg-slate-800 mx-2 hidden sm:block" />
 
-          <div className="flex items-center gap-2 text-xs text-slate-400">
-            <span className="px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-medium">
+          <div className="hidden sm:flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+            <span className="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">
               {captures.length} {captures.length === 1 ? 'capture' : 'captures'}
             </span>
             {stitchResult && (
-              <span className="font-mono text-slate-400">
+              <span className="font-mono text-slate-500 dark:text-slate-400">
                 {stitchResult.width} × {stitchResult.height}px
               </span>
             )}
             {isStitching && (
-              <span className="flex items-center gap-1.5 text-blue-400 animate-pulse">
+              <span className="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 animate-pulse">
                 <Sparkles className="w-3 h-3" /> Stitching...
               </span>
             )}
@@ -438,53 +439,56 @@ export const EditorApp: React.FC = () => {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2 sm:gap-2.5">
+          {/* Theme Toggle Button */}
+          <ThemeToggle />
+
           {/* Load Sample Demo Button */}
           <button
             type="button"
             onClick={handleLoadDemo}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-blue-600/10 hover:bg-blue-600/20 text-blue-400 border border-blue-500/20 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-blue-600/10 hover:bg-blue-600/20 text-blue-600 dark:text-blue-400 border border-blue-500/20 transition-colors"
             title="Load 3 sample screenshots to test the studio"
           >
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Load Demo</span>
+            <span className="hidden sm:inline">Load Demo</span>
           </button>
 
           {/* Upload Images Button */}
           <button
             type="button"
             onClick={handleUploadClick}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-transparent transition-colors"
             title="Upload screenshots from your device"
           >
-            <Upload className="w-3.5 h-3.5 text-slate-400" />
-            <span>Upload</span>
+            <Upload className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
+            <span className="hidden sm:inline">Upload</span>
           </button>
 
           {/* Capture Tab (Extension) */}
           <button
             type="button"
             onClick={handleTriggerCapture}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-transparent transition-colors"
             title={isExtension ? 'Capture current tab viewport' : 'Browser Extension required for live capture'}
           >
-            <Camera className="w-3.5 h-3.5 text-blue-400" />
-            <span>Capture Tab</span>
+            <Camera className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+            <span className="hidden sm:inline">Capture Tab</span>
           </button>
 
           {captures.length > 0 && (
             <button
               type="button"
               onClick={() => setClearConfirmOpen(true)}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-red-400 hover:bg-red-500/10 transition-colors"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-500 hover:text-red-600 dark:text-slate-400 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors"
               title="Clear all captures"
             >
               <RotateCcw className="w-3.5 h-3.5" />
-              <span>Reset</span>
+              <span className="hidden sm:inline">Reset</span>
             </button>
           )}
 
-          <div className="h-5 w-px bg-slate-800" />
+          <div className="h-5 w-px bg-slate-200 dark:bg-slate-800" />
 
           {/* Export Dropdown */}
           <div className="relative">
@@ -492,7 +496,7 @@ export const EditorApp: React.FC = () => {
               type="button"
               disabled={captures.length === 0 || isExporting}
               onClick={() => setExportDropdownOpen(!exportDropdownOpen)}
-              className="flex items-center gap-2 px-4 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-500 disabled:opacity-40 disabled:hover:bg-blue-600 text-white shadow-md transition-all cursor-pointer"
+              className="flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-500 disabled:opacity-40 disabled:hover:bg-blue-600 text-white shadow-md transition-all cursor-pointer"
             >
               <Download className="w-3.5 h-3.5" />
               <span>{isExporting ? 'Exporting...' : 'Export Output'}</span>
@@ -500,42 +504,42 @@ export const EditorApp: React.FC = () => {
             </button>
 
             {exportDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-52 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl p-1.5 z-50 text-xs">
+              <div className="absolute right-0 mt-2 w-52 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-2xl p-1.5 z-50 text-xs">
                 <button
                   type="button"
                   onClick={handleExportPng}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 hover:text-white transition-colors text-left"
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors text-left cursor-pointer"
                 >
-                  <Download className="w-4 h-4 text-emerald-400" />
+                  <Download className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
                   <div>
-                    <p className="font-semibold">PNG Image</p>
-                    <p className="text-[10px] text-slate-400">High-resolution continuous image</p>
+                    <p className="font-semibold text-slate-900 dark:text-white">PNG Image</p>
+                    <p className="text-[10px] text-slate-500 dark:text-slate-400">High-resolution continuous image</p>
                   </div>
                 </button>
 
-                <div className="h-px bg-slate-800 my-1" />
+                <div className="h-px bg-slate-100 dark:bg-slate-800 my-1" />
 
                 <button
                   type="button"
                   onClick={() => handleExportPdf('single-page')}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 hover:text-white transition-colors text-left"
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors text-left cursor-pointer"
                 >
-                  <FileText className="w-4 h-4 text-rose-400" />
+                  <FileText className="w-4 h-4 text-rose-500 dark:text-rose-400" />
                   <div>
-                    <p className="font-semibold">PDF (Continuous)</p>
-                    <p className="text-[10px] text-slate-400">Single long document</p>
+                    <p className="font-semibold text-slate-900 dark:text-white">PDF (Continuous)</p>
+                    <p className="text-[10px] text-slate-500 dark:text-slate-400">Single long document</p>
                   </div>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => handleExportPdf('multi-page')}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 hover:text-white transition-colors text-left"
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors text-left cursor-pointer"
                 >
-                  <FileText className="w-4 h-4 text-amber-400" />
+                  <FileText className="w-4 h-4 text-amber-500 dark:text-amber-400" />
                   <div>
-                    <p className="font-semibold">PDF (Paged A4)</p>
-                    <p className="text-[10px] text-slate-400">Auto-sliced standard A4 pages</p>
+                    <p className="font-semibold text-slate-900 dark:text-white">PDF (Paged A4)</p>
+                    <p className="text-[10px] text-slate-500 dark:text-slate-400">Auto-sliced standard A4 pages</p>
                   </div>
                 </button>
               </div>
@@ -547,9 +551,9 @@ export const EditorApp: React.FC = () => {
       {/* Main Workspace Layout */}
       <div className="flex-1 flex overflow-hidden relative">
         {/* Left Sidebar: Reorderable List & Settings */}
-        <aside className="w-80 bg-slate-900/80 backdrop-blur-sm border-r border-slate-800 flex flex-col flex-shrink-0 z-20 overflow-hidden">
-          <div className="p-4 border-b border-slate-800">
-            <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
+        <aside className="w-80 bg-slate-50/95 dark:bg-slate-900/80 backdrop-blur-sm border-r border-slate-200 dark:border-slate-800 flex flex-col flex-shrink-0 z-20 overflow-hidden transition-colors">
+          <div className="p-4 border-b border-slate-200 dark:border-slate-800">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1">
               Captured Screenshots
             </h2>
             <p className="text-[11px] text-slate-500">
@@ -560,21 +564,21 @@ export const EditorApp: React.FC = () => {
           {/* Draggable Captures List */}
           <div className="flex-1 overflow-y-auto p-4 space-y-2">
             {captures.length === 0 ? (
-              <div className="text-center py-8 px-4 border border-dashed border-slate-800 rounded-xl space-y-3">
-                <Camera className="w-8 h-8 text-slate-600 mx-auto" />
-                <p className="text-xs font-medium text-slate-400">No screenshots loaded</p>
+              <div className="text-center py-8 px-4 border border-dashed border-slate-300 dark:border-slate-800 rounded-xl space-y-3 bg-white/60 dark:bg-transparent">
+                <Camera className="w-8 h-8 text-slate-400 dark:text-slate-600 mx-auto" />
+                <p className="text-xs font-medium text-slate-600 dark:text-slate-400">No screenshots loaded</p>
                 <div className="flex flex-col gap-2 pt-1">
                   <button
                     type="button"
                     onClick={handleLoadDemo}
-                    className="w-full py-1.5 px-3 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/30 text-xs font-medium transition-colors"
+                    className="w-full py-1.5 px-3 rounded-lg bg-blue-600/15 hover:bg-blue-600/25 text-blue-600 dark:text-blue-400 border border-blue-500/30 text-xs font-medium transition-colors"
                   >
                     ✨ Load 3 Sample Screenshots
                   </button>
                   <button
                     type="button"
                     onClick={handleUploadClick}
-                    className="w-full py-1.5 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition-colors"
+                    className="w-full py-1.5 px-3 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-transparent text-xs font-medium transition-colors"
                   >
                     📁 Upload Image Files
                   </button>
@@ -605,14 +609,14 @@ export const EditorApp: React.FC = () => {
 
           {/* Stitch Configuration Controls */}
           {captures.length > 0 && (
-            <div className="p-4 border-t border-slate-800">
+            <div className="p-4 border-t border-slate-200 dark:border-slate-800">
               <StitchControls config={config} onChange={handleConfigChange} />
             </div>
           )}
         </aside>
 
         {/* Center: Canvas Workspace & Annotation Overlay */}
-        <main className="flex-1 flex flex-col relative overflow-hidden bg-slate-950">
+        <main className="flex-1 flex flex-col relative overflow-hidden bg-slate-200/60 dark:bg-slate-950 transition-colors">
           {/* Top floating annotation toolbar */}
           {captures.length > 0 && (
             <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20">
