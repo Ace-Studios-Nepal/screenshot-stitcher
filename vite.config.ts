@@ -10,6 +10,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         index: resolve(__dirname, 'index.html'),
+        privacy: resolve(__dirname, 'privacy.html'),
         sidepanel: resolve(__dirname, 'sidepanel.html'),
         editor: resolve(__dirname, 'editor.html'),
         popup: resolve(__dirname, 'popup.html'),

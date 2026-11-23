@@ -610,6 +610,12 @@ export const LandingPage: React.FC = () => {
                             Studio Demo
                         </a>
                         <a
+                            href="privacy.html"
+                            className="hover:text-slate-200 transition-colors"
+                        >
+                            Privacy Policy
+                        </a>
+                        <a
                             href="https://github.com/Ace-Studios-Nepal/screenshot-stitcher"
                             className="hover:text-slate-200 transition-colors flex items-center gap-1"
                         >

@@ -162,12 +162,21 @@ npm test
 # 5. Production build (outputs to dist/)
 npm run build
 
-# 6. Package extension zip for Firefox Add-ons (AMO):
+# 6. Package production zip for Chrome Web Store:
+npm run package:chrome
+
+# 7. Generate promotional screenshots & store tiles (1280x800, 440x280, 1400x560):
+npm run generate-store-assets
+
+# 8. Package extension zip for Firefox Add-ons (AMO):
 npm run package
 
-# 7. Package unminified source code for Mozilla Reviewers:
+# 9. Package unminified source code for Mozilla Reviewers:
 npm run package:source
 ```
+
+> [!NOTE]
+> Review our comprehensive [Privacy Policy](file:///Users/aashish-cd/Desktop/cd/Projects/screenshot-stitcher/PRIVACY_POLICY.md) (or live web version at `privacy.html`) detailing 100% local client-side processing, zero remote analytics, and permission disclosures.
 
 ---
 
