@@ -29,13 +29,14 @@ describe('Manifest V3 Chromium & Cross-Browser Compatibility', () => {
     const requiredPermissions = [
       'activeTab',
       'scripting',
-      'storage',
       'sidePanel',
-      'downloads',
     ];
     for (const perm of requiredPermissions) {
       expect(manifest.permissions).toContain(perm);
     }
+    // Verify unused permissions flagged by Chrome Web Store review are strictly removed
+    expect(manifest.permissions).not.toContain('storage');
+    expect(manifest.permissions).not.toContain('downloads');
   });
 
   it('declares side_panel and action popup entry points', () => {

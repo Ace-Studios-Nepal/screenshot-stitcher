@@ -1,6 +1,6 @@
 {
   "name": "stitchify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Browser extension and web studio to capture, vertically stitch, annotate, and export screenshots as PNG or PDF.",
   "license": "MIT",
   "type": "module",

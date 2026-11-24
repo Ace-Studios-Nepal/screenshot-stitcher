@@ -1,14 +1,12 @@
 {
   "manifest_version": 3,
   "name": "Stitchify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Capture multiple webpage sections, vertically stitch them, annotate, and export as PNG or PDF.",
   "permissions": [
     "activeTab",
     "scripting",
-    "storage",
-    "sidePanel",
-    "downloads"
+    "sidePanel"
   ],
   "host_permissions": [
     "<all_urls>"

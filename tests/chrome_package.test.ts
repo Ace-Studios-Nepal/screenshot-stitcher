@@ -43,9 +43,9 @@ describe('Chrome Web Store Package & Manifest Compliance', () => {
       // Verify permissions and sidePanel
       expect(manifest.permissions).toContain('activeTab');
       expect(manifest.permissions).toContain('scripting');
-      expect(manifest.permissions).toContain('storage');
       expect(manifest.permissions).toContain('sidePanel');
-      expect(manifest.permissions).toContain('downloads');
+      expect(manifest.permissions).not.toContain('storage');
+      expect(manifest.permissions).not.toContain('downloads');
       expect(manifest.host_permissions).toContain('<all_urls>');
       expect(manifest.side_panel?.default_path).toBe('sidepanel.html');
 

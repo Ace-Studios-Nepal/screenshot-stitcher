@@ -122,7 +122,7 @@
               </div>
               <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 shadow-xs">
                 <h3 class="font-semibold text-slate-900 dark:text-white">⚙️ User Preferences</h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400">Gap spacing, canvas padding, and background color choices are stored locally using <code class="text-blue-600 dark:text-blue-300 font-mono">chrome.storage.local</code>.</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Gap spacing, canvas padding, and background color choices are stored locally using client-side <code class="text-blue-600 dark:text-blue-300 font-mono">IndexedDB</code> and theme settings in <code class="text-blue-600 dark:text-blue-300 font-mono">localStorage</code>.</p>
               </div>
             </div>
           </div>
@@ -140,10 +140,6 @@
               </thead>
               <tbody class="divide-y divide-slate-200 dark:divide-slate-800/80 bg-white dark:bg-slate-900/50">
                 <tr>
-                  <td class="p-3 font-mono font-semibold text-blue-600 dark:text-blue-400">storage</td>
-                  <td class="p-3">Persists captures, annotations, and spacing settings in local IndexedDB / storage.</td>
-                </tr>
-                <tr>
                   <td class="p-3 font-mono font-semibold text-blue-600 dark:text-blue-400">activeTab</td>
                   <td class="p-3">Allows visible tab capture and page metadata retrieval when you initiate a screenshot.</td>
                 </tr>
@@ -154,10 +150,6 @@
                 <tr>
                   <td class="p-3 font-mono font-semibold text-blue-600 dark:text-blue-400">sidePanel</td>
                   <td class="p-3">Displays the capture reel in a persistent dock adjacent to your web tabs.</td>
-                </tr>
-                <tr>
-                  <td class="p-3 font-mono font-semibold text-blue-600 dark:text-blue-400">downloads</td>
-                  <td class="p-3">Saves exported PNG and PDF files directly to your computer's Downloads directory.</td>
                 </tr>
                 <tr>
                   <td class="p-3 font-mono font-semibold text-blue-600 dark:text-blue-400">&lt;all_urls&gt;</td>

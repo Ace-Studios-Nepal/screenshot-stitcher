@@ -36,12 +36,12 @@ Stitchify requests only the minimal set of permissions required to deliver its c
 
 | Permission | Technical Purpose |
 | :--- | :--- |
-| **`storage`** | Saves your captured thumbnails, annotation layers, and UI preferences locally in browser storage (`IndexedDB` & `chrome.storage.local`). |
 | **`activeTab`** | Grants temporary access to the active webpage when you invoke capture via the popup or shortcut to obtain viewport dimensions and capture visible pixels. |
 | **`scripting`** | Injects a lightweight script into the active tab upon capture to query `window.devicePixelRatio`, ensuring screenshots are rendered at native Retina / HiDPI sharpness without blurriness. |
 | **`sidePanel`** | Provides a persistent docked sidebar adjacent to your webpages so you can review captures, scroll, and reorder slides without closing the extension popup. |
-| **`downloads`** | Delivers the final exported stitched images (PNG) or multi-page documents (PDF) directly to your local computer's Downloads directory. |
 | **`host_permissions: ["<all_urls>"]`** | Allows you to capture viewport sections across any webpage you browse. In Chromium Manifest V3, persistent side panels (`chrome.sidePanel`) and background listeners cannot access tab content with `activeTab` alone because clicks inside the side panel frame do not originate from the webpage DOM. Broad host permission is required solely to invoke `chrome.tabs.captureVisibleTab` on the active tab upon explicit user request. |
+
+*(Note: Stitchify uses standard client-side browser IndexedDB for local screenshot retention and standard HTML5 client-side downloads for PNG/PDF saving; it requests no elevated storage or downloads extension permissions).*
 
 Stitchify **never** monitors your background web activity, intercepts web traffic, modifies page content, or collects cookies or form data.
 
