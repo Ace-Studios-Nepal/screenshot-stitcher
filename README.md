@@ -12,7 +12,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind%20CSS-38B2AC.svg)](https://tailwindcss.com/)
 [![Cross Browser](https://img.shields.io/badge/Browsers-Chrome%20%7C%20Firefox%20%7C%20Edge%20%7C%20Brave-orange.svg)](#-browser-installation-developer-mode)
 
-[**Firefox Add-on**](https://addons.mozilla.org/addon/screenshot-stitcher/) • [**Live Web Studio Demo**](https://screenshot-stitcher.vercel.app/editor.html) • [**Report Bug**](https://github.com/Ace-Studios-Nepal/screenshot-stitcher/issues) • [**Request Feature**](https://github.com/Ace-Studios-Nepal/screenshot-stitcher/issues)
+[**Chrome Web Store**](https://chromewebstore.google.com/detail/stitchify/hchdhpolagdhfcblbbjhoaokaldedkph) • [**Firefox Add-on**](https://addons.mozilla.org/addon/screenshot-stitcher/) • [**Live Web Studio Demo**](https://screenshot-stitcher.vercel.app/editor.html) • [**Report Bug**](https://github.com/Ace-Studios-Nepal/screenshot-stitcher/issues) • [**Request Feature**](https://github.com/Ace-Studios-Nepal/screenshot-stitcher/issues)
 
 </div>
 
@@ -56,6 +56,12 @@ Stitchify is **100% compatible with Chromium-based browsers** and strictly adher
 You can load and use Stitchify directly without waiting for store approval.
 
 ### 🔷 Google Chrome / Brave / Microsoft Edge / Arc / Opera
+
+You can install the official extension directly from the [**Chrome Web Store**](https://chromewebstore.google.com/detail/stitchify/hchdhpolagdhfcblbbjhoaokaldedkph):
+
+[![Available in the Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-Install%20Now-4285F4?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/stitchify/hchdhpolagdhfcblbbjhoaokaldedkph)
+
+Or install manually in Developer Mode:
 
 1. **Download / Build the Extension**:
    * Download the latest release `.zip` from [GitHub Releases](https://github.com/Ace-Studios-Nepal/screenshot-stitcher/releases) and extract it, **OR**

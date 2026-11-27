@@ -16,7 +16,7 @@ import { ThemeToggle } from '../components/ThemeToggle';
 
 const SAJILOTOOL_URL = 'https://sajilotool.com';
 const FIREFOX_ADDON_URL = 'https://addons.mozilla.org/addon/screenshot-stitcher/';
-const CHROME_STORE_URL = 'https://chrome.google.com/webstore';
+const CHROME_STORE_URL = 'https://chromewebstore.google.com/detail/stitchify/hchdhpolagdhfcblbbjhoaokaldedkph';
 
 const FirefoxIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
     <svg
